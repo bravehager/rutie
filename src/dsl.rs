@@ -228,7 +228,7 @@ macro_rules! unsafe_methods {
             pub extern fn $method_name(argc: $crate::types::Argc,
                                        argv: *const $crate::AnyObject,
                                        mut $rtself_name: $rtself_class) -> $return_type {
-                let _arguments = $crate::util::parse_arguments(argc, argv);
+                let _arguments = unsafe { $crate::util::parse_arguments(argc, argv) };
                 let mut _i = 0;
 
                 $(
@@ -351,7 +351,7 @@ macro_rules! methods {
             pub extern fn $method_name(argc: $crate::types::Argc,
                                        argv: *const $crate::AnyObject,
                                        mut $rtself_name: $rtself_class) -> $return_type {
-                let _arguments = $crate::util::parse_arguments(argc, argv);
+                let _arguments = unsafe { $crate::util::parse_arguments(argc, argv) };
                 let mut _i = 0;
 
                 $(
